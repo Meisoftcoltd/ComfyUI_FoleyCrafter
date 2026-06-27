@@ -29,9 +29,9 @@ try:
     from diffusers.models.modeling_utils import _LOW_CPU_MEM_USAGE_DEFAULT, load_model_dict_into_meta
 except ImportError:
     from diffusers.models.modeling_utils import _LOW_CPU_MEM_USAGE_DEFAULT
-    # Patch de compatibilidad: definimos un fallback para evitar el ImportError
+    # Fallback para evitar el ImportError en versiones modernas de diffusers
     def load_model_dict_into_meta(*args, **kwargs):
-        pass
+        return None
 from diffusers.utils import (
     USE_PEFT_BACKEND,
     _get_model_file,
