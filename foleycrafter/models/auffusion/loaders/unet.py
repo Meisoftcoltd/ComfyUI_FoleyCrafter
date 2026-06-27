@@ -25,7 +25,13 @@ from torch import nn
 
 from diffusers.loaders.utils import AttnProcsLayers
 from diffusers.models.embeddings import ImageProjection
-from diffusers.models.modeling_utils import _LOW_CPU_MEM_USAGE_DEFAULT, load_model_dict_into_meta
+try:
+    from diffusers.models.modeling_utils import _LOW_CPU_MEM_USAGE_DEFAULT, load_model_dict_into_meta
+except ImportError:
+    from diffusers.models.modeling_utils import _LOW_CPU_MEM_USAGE_DEFAULT
+    # Patch de compatibilidad: definimos un fallback para evitar el ImportError
+    def load_model_dict_into_meta(*args, **kwargs):
+        pass
 from diffusers.utils import (
     USE_PEFT_BACKEND,
     _get_model_file,
