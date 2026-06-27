@@ -4,7 +4,7 @@ import sys
 def install_dependencies():
     print("FoleyCrafter: Installing dependencies...")
     try:
-        subprocess.check_call([sys.executable, "-m", "pip", "install", "decord", "moviepy"])
+        subprocess.check_call([sys.executable, "-m", "pip", "install", "decord", "moviepy", "pydub"])
         print("FoleyCrafter: Dependencies installed successfully.")
     except Exception as e:
         print(f"FoleyCrafter: Failed to install dependencies: {e}")
